@@ -8,7 +8,7 @@ export default function Home() {
     <div className=''>
       {/* Header goes here */}
       <div>
-        <Header/>
+        {/* <Header/> */}
       </div>
 
         {/* Banner Component*/}

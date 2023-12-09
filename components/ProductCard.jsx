@@ -1,12 +1,20 @@
 "use client"
-
 import { PriceFormater } from "@/priceFormater";
+import { addToCart } from "@/redux/slice";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const ProductCard = ({id, title, price, description, image, rating, category}) => {
-    const [starRate, setRating] = useState("")
+    const dispatch = useDispatch()
+    
+    const addItemToBasket = ()=>{
+      const product = {
+        id, title, price, description, image, rating, category
+      }
+      dispatch(addToCart(product))
+    }
 
   return (
     <div className="flex flex-col m-3 bg-slate-800 z-30 p-10 relative gap-3">
@@ -24,7 +32,7 @@ const ProductCard = ({id, title, price, description, image, rating, category}) =
 
         <div>{PriceFormater(price)}</div>
 
-        <button className="button mt-auto">Add to basket</button>
+        <button onClick={addItemToBasket} className="button mt-auto" >Add to basket</button>
     </div>
   )
 }
